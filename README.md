@@ -1,32 +1,46 @@
-# React + TypeScript + Vite
+# 🍚 SplitMeal - แอปหารค่าอาหารตามสัดส่วน
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**SplitMeal** คือ Web Application สำหรับหารค่าอาหารตามสัดส่วนของยอดจ่ายจริง เหมาะสำหรับกลุ่มเพื่อนหรือเพื่อนร่วมงานที่สั่งอาหารร่วมกัน โดยแต่ละคนสั่งอาหารราคาไม่เท่ากัน ระบบจะกระจายส่วนลด ค่าส่ง และค่าใช้จ่ายสุทธิไปยังแต่ละรายการและแต่ละบุคคลอย่างยุติธรรม พร้อมระบบจัดการเศษสตางค์ (Zero-Drift Rounding) ผลรวมตรงกับยอดจ่ายจริงเป๊ะ 100%
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌟 ฟีเจอร์หลัก (Features)
 
-## React Compiler
+- ⚡ **โหมดกรอกเร็ว (Quick Input Mode)**: กรอกเฉพาะตัวเลขราคาอาหารได้ทันที เช่น `[ 79 ] [ 69 ] [ 69 ]` หรือ Paste ทีเดียว เช่น `79 69 69` คำนวณเสร็จภายในไม่เกิน 10–15 วินาที
+- 🏷️ **ช่องใส่ส่วนลด & ค่าส่ง (Optional)**: ใส่ส่วนลดได้ทั้งแบบ "บาท (฿)" หรือ "เปอร์เซ็นต์ (%)" และมีช่องค่าส่ง โดยคำนวณยอดสุทธิให้อัตโนมัติ
+- 🎯 **การคำนวณสัดส่วนแม่นยำ (Largest Remainder Method)**: จัดการเศษทศนิยม 2 ตำแหน่ง การันตีว่าผลรวมย่อยจะเท่ากับยอด Total Paid พอดี ไม่มีปัญหาเงินขาดหรือเกินแม้แต่ 0.01 บาท
+- 👥 **แบ่งตามคน (Person Split)**: สรุปยอดแยกตามบุคคล และสามารถแตะเพื่อเปลี่ยนเจ้าของอาหารได้ง่ายๆ
+- ⚖️ **โหมดหารเท่ากัน (Equal Split)**: เฉลี่ยค่าอาหารเท่ากันทุกคน
+- 📋 **คัดลอกส่ง LINE / Messenger**: กดปุ่มเดียว คัดลอกสรุปรายการพร้อม Emoji และยอดที่แต่ละคนต้องโอน พร้อมส่งเข้ากลุ่มแชททันที
+- 💾 **บันทึกอัตโนมัติ (LocalStorage)**: บันทึกข้อมูลบนอุปกรณ์ของผู้ใช้ ไม่ต้องกลัวข้อมูลหายเมื่อรีเฟรชหน้าเว็บ
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🛠️ เทคโนโลยีที่ใช้ (Tech Stack)
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- **Frontend**: [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **Bundler**: [Vite](https://vite.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Micro-interactions**: [Canvas Confetti](https://www.npmjs.com/package/canvas-confetti)
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+---
+
+## 🚀 วิธีติดตั้งและรันในเครื่อง (Local Setup)
+
+```bash
+# 1. Clone repository
+git clone https://github.com/<YOUR_USERNAME>/<YOUR_REPO_NAME>.git
+cd <YOUR_REPO_NAME>
+
+# 2. ติดตั้ง Dependencies
+npm install
+
+# 3. รัน Dev Server
+npm run dev
+
+# 4. Build Production
+npm run build
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+เปิดเบราว์เซอร์ไปที่: `http://localhost:5173/`
